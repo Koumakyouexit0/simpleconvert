@@ -19,9 +19,9 @@ def download_mp3(url, output_path="."):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)   # tải video
         filename = ydl.prepare_filename(info)         # tên file gốc (.webm, .m4a,…)
-        mp3_file = os.path.splitext(filename)[0] + ".mp3"  # tên file mp3 sau khi extract
+        mp3_file = os.path.splitext(filename)[0] + ".mp3"
 
-    # convert sang mono + 128kbps (chỉ file này thôi)
+    # convert sang mono + 128kbps 
     if os.path.exists(mp3_file):
         temp_output = mp3_file.replace(".mp3", "_mono.mp3")
         subprocess.run([
@@ -76,3 +76,4 @@ if __name__ == "__main__":
         print(f"✅ Toàn bộ file OGG đã được lưu trong thư mục: {ogg_folder}")
     else:
         print("❌ Bỏ qua convert OGG.")
+
